@@ -15,6 +15,10 @@ handler = WebhookHandler(os.getenv('YOUR_CHANNEL_SECRET'))
 
 # client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
+@app.route('/', methods=['GET'])
+def home():
+    return 'WELCOME TO HOME PAGE'
+
 def generate_response(prompt, role="user"):
     pass
 
