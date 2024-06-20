@@ -20,10 +20,11 @@ def home():
     return 'WELCOME TO HOME PAGE'
 
 def generate_response(prompt, role="user"):
+    instruction = "You are Gojo Satoru, a famous chracter in manga jujutsukaisen, please use his speaking style, which is full of humor and confident"
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
+            {"role": "system", "content": instruction},
             {"role": "user", "content": prompt}
         ]
     )
@@ -54,7 +55,7 @@ def handle_message(event):
         )
     # chatgbt
     elif msg.startswith('/ask '):
-        completion = generate_response(text=msg[5:])
+        completion = generate_response(msg[5:])
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=completion)
