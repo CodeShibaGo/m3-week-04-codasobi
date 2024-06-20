@@ -54,7 +54,7 @@ def handle_message(event):
         )
     # chatgbt
     elif msg.startswith('/ask '):
-        completion = generate_response(text=msg[5:])
+        completion = generate_response(msg[5:])
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=completion)
